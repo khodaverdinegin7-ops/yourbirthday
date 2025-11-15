@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💫 Our Love 💫</title>
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #111, #222);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h1 { color: #00ffff; margin-bottom: 20px; font-size: 2.2rem; text-shadow: 0 0 10px #00ffff; }
+p { margin-bottom: 30px; font-size: 1.3rem; max-width: 600px; transition: all 0.3s ease; }
+button {
+    background-color: #00ffff;
+    color: #1c1c1c;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 20px rgba(0,255,255,0.5);
+    transition: all 0.3s ease;
+}
+button:hover { transform: scale(1.1) rotate(-2deg); background-color: #00bfff; box-shadow: 0 5px 25px rgba(0,255,255,0.7); }
+.heart, .sticker {
+    position: absolute;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: floatUp 4s linear forwards;
+}
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(1); opacity: 1; }
+    100% { transform: translateY(-50px) scale(1.3); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<h1>💫 You unlocked our love 💫</h1>
+<p id="memory">Click the button to see a memory 😎</p>
+<button onclick="nextMemory()">Next Memory 🕹️</button>
+
+<script>
+// ❤️ جملات عاشقانه روی قلب‌ها
+const love_msgs = ["zane Nawid","shohare Negin","Ich liebe dich","schatzzz","azizam"];
+const stickers = ["🌹","🍎","💖","💕","💌"];
+
+// 💭 خاطرات شما
+const memories = [
+"🏍️shabe aval bad az inke goftam class daramo to shab bekhir gofti didam khabam nemibare baz omadam telegram yeho profile jadideto didam pishe khodam goftam khosh be haleeee dostdokhtareshhh😄",
+"on rozio yadete ke aval ke baham tasviri harf zadim💐",
+"🎶kole rozaii ke toie metro mishinam o ahang gosh midam ,ahanga mano yade to mindaze 💓",
+"💬 rozaie aval ke baham harf mizadim har bar ke payameto mididam ghalbam tond tond mizad🌍",
+"☕ hamiche montazere jomeham ke bishtar bebinamet ",
+"💓yeshab dashtam pishe khodam migoftam fekr kon bege bia telefoni harf bezanim,goshi ro baz kardam didam neveshti mikhay ye roz telefoni harf bezanim?",
+"💞baham anar khordim Youtube didim",
+"hese khobe zendegi kardan midi behem🌹💗💟",
+"yadame ye roz goftam khodaya man Nawido khyli dost daram va bayad behesh begam on shab akhare telefon arom sedat zadam goftam doset daram🌷💕💞",
+"har ro por az hese tarif kardanam💏 ",
+"avalin suprisi ke dashti baram channele Youtube onghad por az hese eshgh shodam ke tah nadasht💟 ",
+"yadete yeshab na man payam midadam na to? man hes mikardam to az man khoshet nemiyad to hes mikardi man az to:)💓 ",
+"onshab ke neshestim list dorost kardim ke kojaha mikhayim berim💞",
+"har bar ke aks baram mifresti ghalbam tond tond mizane bara didanesh,bara didane to🌺",
+"bada on 4 roz bare avali ke payam dadi ghorob ,dashtam ahange \"man toro mikham\" ro gosh midadamo boland mikhondam ke payameto didam :)🌹"
+];
+
+// ❤️ ایجاد قلب و استیکر متحرک
+function createFloating() {
+    const elem = document.createElement('div');
+    const isHeart = Math.random() > 0.4;
+    elem.className = isHeart ? 'heart' : 'sticker';
+    elem.innerText = isHeart ? "❤️ " + love_msgs[Math.floor(Math.random()*love_msgs.length)]
+                             : stickers[Math.floor(Math.random()*stickers.length)];
+    elem.style.left = Math.random() * (window.innerWidth - 50) + "px";
+    elem.style.fontSize = (20 + Math.random()*35) + "px";
+    document.body.appendChild(elem);
+    setTimeout(() => elem.remove(), 4000);
+}
+
+// ❤️ اجرای قلب‌ها و استیکرها
+setInterval(createFloating, 500);
+
+// 💭 نمایش خاطره بعدی با افکت
+function nextMemory() {
+    const memP = document.getElementById('memory');
+    const m = memories[Math.floor(Math.random()*memories.length)];
+    memP.style.transform = 'scale(0.9) rotate(-2deg)';
+    memP.style.opacity = 0;
+    setTimeout(()=>{
+        memP.innerText = m;
+        memP.style.opacity = 1;
+        memP.style.transform = 'scale(1) rotate(0deg)';
+    },300);
+}
+</script>
+</body>
+</html>
